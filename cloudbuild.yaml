@@ -3,12 +3,12 @@ steps:
   args:
   - functions
   - deploy
-  - transfert_lucca
+  - function-1
   - --runtime
   - Python 3.12
   - --trigger-http
   - --allow-unauthenticated
   - --entry-point
-  - main
+  - hello_http
   - --source
   - .
