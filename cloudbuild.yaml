@@ -10,7 +10,7 @@ steps:
       - 'cp'
       - '-r'
       - '.'
-      - 'gs://gcf-v2-sources-633227318863-europe-west9/${_BRANCH_NAME}/'
+      - 'gs://gcf-v2-sources-633227318863-europe-west9/${_SUBSTITUTIONS_BRANCH}/'
 
   # Étape pour déployer la fonction Cloud à partir du code source téléchargé
   - name: 'gcr.io/google.com/cloudsdktool/cloud-sdk'
@@ -22,12 +22,10 @@ steps:
           --runtime python312 \
           --trigger-http \
           --entry-point hello_http \
-          --source gs://gcf-v2-sources-633227318863-europe-west9/${_BRANCH_NAME}/ \
+          --source gs://gcf-v2-sources-633227318863-europe-west9/${_SUBSTITUTIONS_BRANCH}/ \
           --region europe-west9
 
 # Substitutions pour remplacer les espaces réservés
 substitutions:
   _YOUR_BUCKET_NAME: 'gcf-v2-sources-633227318863-europe-west9'
-
-# Valeur par défaut pour le nom de la branche
-_BRANCH_NAME: 'main'
+  _SUBSTITUTIONS_BRANCH: 'main'  # Valeur par défaut pour le nom de la branche
