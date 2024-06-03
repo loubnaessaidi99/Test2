@@ -1,14 +1,19 @@
 steps:
-- name: 'gcr.io/cloud-builders/gcloud'
-  args:
-  - functions
-  - deploy
-  - function-1
-  - --runtime
-  - Python 3.12
-  - --trigger-http
-  - --allow-unauthenticated
-  - --entry-point
-  - hello_http
-  - --source
-  - .
+  # Step to install dependencies
+  - name: 'gcr.io/cloud-builders/npm'
+    args: ['install']
+
+  # Step to deploy the Cloud Function
+  - name: 'gcr.io/google.com/cloudsdktool/cloud-sdk'
+    entrypoint: 'gcloud'
+    args:
+      - 'functions'
+      - 'deploy'
+      - 'function-1'
+      - '--runtime'
+      - 'Python 3.12'  
+      - '--trigger-http'  
+      - '--source'
+      - '.'
+     
+
