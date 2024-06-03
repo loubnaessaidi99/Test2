@@ -1,9 +1,10 @@
 steps:
-  # Step to install dependencies
+  # Étape pour installer les dépendances
   - name: 'gcr.io/cloud-builders/npm'
     args: ['install']
 
- - name: 'gcr.io/cloud-builders/gsutil'
+  # Étape pour copier le code source vers Google Cloud Storage
+  - name: 'gcr.io/cloud-builders/gsutil'
     args:
       - '-m'
       - 'cp'
