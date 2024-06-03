@@ -5,6 +5,7 @@ steps:
     args: ['install']
 
 
+
   # Step to upload the source code to Google Cloud Storage
   - name: 'gcr.io/cloud-builders/gsutil'
     args:
@@ -12,7 +13,7 @@ steps:
       - 'cp'
       - '-r'
       - '.'
-      - 'gs://gcf-v2-sources-633227318863-europe-west9/${BRANCH_NAME}/'
+      - 'gs://gcf-v2-sources-633227318863-europe-west9/${_BRANCH_NAME}/'
 
   # Step to deploy the Cloud Function from the uploaded source
   - name: 'gcr.io/google.com/cloudsdktool/cloud-sdk'
@@ -20,12 +21,12 @@ steps:
     args:
       - '-c'
       - |
-        BRANCH=$(echo $BRANCH_NAME | sed 's/\//-/g')
+        BRANCH=$(echo $_BRANCH_NAME | sed 's/\//-/g')
         gcloud functions deploy function-1-$BRANCH \
           --runtime python312 \
           --trigger-http \
           --entry-point hello_http \
-          --source gs://gcf-v2-sources-633227318863-europe-west9/${BRANCH_NAME}/ \
+          --source gs://gcf-v2-sources-633227318863-europe-west9/${_BRANCH_NAME}/ \
           --region europe-west9
 
 # Substitutions to replace placeholders
