@@ -5,16 +5,13 @@ steps:
     args: ['install']
 
 
-
-
   # Step to upload the source code to Google Cloud Storage
   - name: 'gcr.io/cloud-builders/gsutil'
+    entrypoint: 'bash'
     args:
-      - '-m'
-      - 'cp'
-      - '-r'
-      - '.'
-      - 'gs://gcf-v2-sources-633227318863-europe-west9/${_BRANCH_NAME}/'
+      - '-c'
+      - |
+        gsutil cp -r . gs://gcf-v2-sources-633227318863-europe-west9/${BRANCH_NAME}/
 
   # Step to deploy the Cloud Function from the uploaded source
   - name: 'gcr.io/google.com/cloudsdktool/cloud-sdk'
@@ -22,15 +19,18 @@ steps:
     args:
       - '-c'
       - |
-        BRANCH=$(echo $_BRANCH_NAME | sed 's/\//-/g')
+        BRANCH=$(echo $BRANCH_NAME | sed 's/\//-/g')
         gcloud functions deploy function-1-$BRANCH \
           --runtime python312 \
           --trigger-http \
           --entry-point hello_http \
-          --source gs://gcf-v2-sources-633227318863-europe-west9/${_BRANCH_NAME}/ \
+          --source gs://gcf-v2-sources-633227318863-europe-west9/${BRANCH_NAME}/ \
           --region europe-west9
+
+# Environment variables
+env:
+  - 'BRANCH_NAME=$_BRANCH_NAME'
 
 # Substitutions to replace placeholders
 substitutions:
   _YOUR_BUCKET_NAME: 'gcf-v2-sources-633227318863-europe-west9'
-  _BRANCH_NAME: 'main'  # Remplacez 'master' par le nom de votre branche par défaut
