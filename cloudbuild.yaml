@@ -1,4 +1,10 @@
 steps:
+
+# Nettoyer le cache npm
+  - name: 'gcr.io/cloud-builders/npm'
+    args: ['cache', 'clean', '--force']
+
+    
   # Étape pour installer les dépendances
   - name: 'gcr.io/cloud-builders/npm'
     args: ['install']
