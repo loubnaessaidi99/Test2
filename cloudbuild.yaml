@@ -5,7 +5,7 @@ steps:
     args: ['install']
 
 
-  # Step to upload the source code to Google Cloud Storage
+
  - name: 'gcr.io/cloud-builders/gsutil'
     args:
       - '-m'
