@@ -1,10 +1,7 @@
-
 steps:
   # Step to install dependencies
   - name: 'gcr.io/cloud-builders/npm'
     args: ['install']
-
-
 
  - name: 'gcr.io/cloud-builders/gsutil'
     args:
