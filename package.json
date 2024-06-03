@@ -1,0 +1,9 @@
+{
+  "name": "cnx-git-gcp",
+  "version": "1.0.0",
+  "description": "cnx-git-gcp",
+  "main": "main.py", // Nom du fichier principal de votre fonction
+  "dependencies": {
+    // Dépendances Python nécessaires pour votre Cloud Function
+  }
+}
