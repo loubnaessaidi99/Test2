@@ -6,6 +6,7 @@ steps:
 
 
 
+
   # Step to upload the source code to Google Cloud Storage
   - name: 'gcr.io/cloud-builders/gsutil'
     args:
@@ -32,3 +33,4 @@ steps:
 # Substitutions to replace placeholders
 substitutions:
   _YOUR_BUCKET_NAME: 'gcf-v2-sources-633227318863-europe-west9'
+  _BRANCH_NAME: 'main'  # Remplacez 'master' par le nom de votre branche par défaut
