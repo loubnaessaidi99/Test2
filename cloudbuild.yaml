@@ -1,10 +1,8 @@
 steps:
-
-# Nettoyer le cache npm
+  # Nettoyer le cache npm
   - name: 'gcr.io/cloud-builders/npm'
     args: ['cache', 'clean', '--force']
 
-    
   # Étape pour installer les dépendances
   - name: 'gcr.io/cloud-builders/npm'
     args: ['install']
@@ -25,10 +23,10 @@ steps:
       - '-c'
       - |
         gcloud functions deploy function-2 \
-          --runtime Node.js 20 \
+          --runtime nodejs20 \
           --trigger-http \
           --entry-point hello_http \
-          --source gcf-v2-sources-633227318863-us-central1/${_SUBSTITUTIONS_BRANCH}/ \
+          --source gs://gcf-v2-sources-633227318863-us-central1/${_SUBSTITUTIONS_BRANCH}/ \
           --region us-central1
 
 # Substitutions pour remplacer les espaces réservés
