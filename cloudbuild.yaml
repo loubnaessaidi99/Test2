@@ -14,7 +14,7 @@ steps:
       - 'cp'
       - '-r'
       - '.'
-      - 'gs://gcf-v2-sources-633227318863-us-central1/${_SUBSTITUTIONS_BRANCH}'
+      - 'gs://gcf-v2-sources-633227318863-us-central1/main/'
 
   # Étape pour déployer la fonction Cloud à partir du code source téléchargé
   - name: 'gcr.io/google.com/cloudsdktool/cloud-sdk'
@@ -26,7 +26,7 @@ steps:
           --runtime nodejs20 \
           --trigger-http \
           --entry-point hello_http \
-          --source gs://gcf-v2-sources-633227318863-us-central1/${_SUBSTITUTIONS_BRANCH} \
+          --source gs://gcf-v2-sources-633227318863-us-central1/main/ \
           --region us-central1
 
 # Substitutions pour remplacer les espaces réservés
