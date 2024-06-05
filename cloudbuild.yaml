@@ -17,19 +17,21 @@ steps:
       - 'gs://${_YOUR_BUCKET_NAME}/${_SUBSTITUTIONS_BRANCH}/'
 
   # Étape pour déployer la fonction Cloud à partir du code source téléchargé
-  - name: 'gcr.io/google.com/cloudsdktool/cloud-sdk'
+  - name: 'gcr.io/cloud-builders/gcloud'
     entrypoint: 'bash'
     args:
       - '-c'
       - |
-        gcloud functions deploy function-2 \
-          --runtime nodejs20 \
+        git https://github.com/loubnaessaidi99/Test2.git /workspace/repo
+        
+        gcloud functions deploy function-test-git \
+          --runtime   python312 \
           --trigger-http \
           --entry-point hello_http \
-          --source gs://${_YOUR_BUCKET_NAME}/${_SUBSTITUTIONS_BRANCH}/ \
-          --region us-central1
+          --source "gs://${_YOUR_BUCKET_NAME}/${_SUBSTITUTIONS_BRANCH}/" \
+          --region europe-west9
 
 # Substitutions pour remplacer les espaces réservés
 substitutions:
-  _YOUR_BUCKET_NAME: 'gcf-v2-sources-633227318863-us-central1'
+  _YOUR_BUCKET_NAME: 'gcf-v2-sources-633227318863-europe-west9'
   _SUBSTITUTIONS_BRANCH: 'main'  # Valeur par défaut pour le nom de la branche
