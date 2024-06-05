@@ -22,7 +22,6 @@ steps:
     args:
       - '-c'
       - |
-        git https://github.com/loubnaessaidi99/Test2.git /workspace/repo
         
         gcloud functions deploy function-test-git \
           --runtime   python312 \
