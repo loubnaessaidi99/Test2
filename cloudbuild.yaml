@@ -1,23 +1,5 @@
 steps:
-  - name: 'gcr.io/cloud-builders/git'
-    args: ['clone', '--single-branch', '--branch', 'main', 'https://github.com/loubnaessaidi99/Test2']
-    dir: './'
-
-  - name: 'gcr.io/cloud-builders/zip'
-    args: ['-r', 'function-source.zip', '.']
-    dir: './'
-
-  - name: 'gcr.io/cloud-builders/gsutil'
-    args: ['cp', 'function-source.zip', 'gs://gcf-v2-sources-488308116332-europe-west9/']
-    dir: './'
-
   - name: 'gcr.io/cloud-builders/gcloud'
-    args: [
-      'functions', 'deploy', 'test',
-      '--runtime', 'python39', 
-      '--trigger-http', 
-      '--source', 'gs://gcf-v2-sources-488308116332-europe-west9/function-source.zip',
-      '--entry-point', 'hello_http'
-    ]
-timeout: '1600s'
+    args: ['functions', 'deploy', 'function-test1', '--runtime', 'python39', '--trigger-http', '--allow-unauthenticated', '--entry-point', 'hello_http']
 
+timeout: '540s'
