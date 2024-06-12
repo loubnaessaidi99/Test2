@@ -1,3 +1,4 @@
 google-cloud-storage
 requests
 flask
+flask==2.0.3
