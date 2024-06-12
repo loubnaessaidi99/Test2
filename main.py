@@ -101,7 +101,7 @@ def get_offers_for_opportunities(list_oppy):
         upload_json_to_gcs(json_string, 'offers.json')
 
 # Fonction principale déclenchée par un événement HTTP
-def main(request):
+def hello_http(request):
     list_oppy = get_all("opportunities", None, True)
     get_offers_for_opportunities(list_oppy)
     return 'Data processing complete.'
@@ -111,7 +111,7 @@ app = Flask(__name__)
 
 @app.route('/', methods=['POST'])
 def handle_request():
-    return main(request)
+    return hello_http(request)
 
 if __name__ == "__main__":
     app.run(debug=True)
