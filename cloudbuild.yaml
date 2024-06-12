@@ -5,6 +5,6 @@ teps:
            '--trigger-http', 
            '--allow-unauthenticated', 
            '--entry-point', 'hello_http', 
-           '--region', 'europe-west9', 
+           '--region', 'europe-west1', 
            '--source', '.']
 timeout: '540s'
