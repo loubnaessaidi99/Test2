@@ -1,4 +1,4 @@
-teps:
+steps:
   - name: 'gcr.io/cloud-builders/gcloud'
     args: ['functions', 'deploy', 'TestLoubna', 
            '--runtime', 'python39', 
