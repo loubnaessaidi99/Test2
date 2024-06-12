@@ -1,2 +1,3 @@
-Flask
-python39
+google-cloud-storage
+requests
+flask
