@@ -1,6 +1,6 @@
 teps:
   - name: 'gcr.io/cloud-builders/gcloud'
-    args: ['functions', 'deploy', 'function-test1', 
+    args: ['functions', 'deploy', 'TestLoubna', 
            '--runtime', 'python39', 
            '--trigger-http', 
            '--allow-unauthenticated', 
