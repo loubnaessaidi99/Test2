@@ -12,7 +12,7 @@ API_KEY = 'dTbjBylazOJpu7LFacOLRqnF/Bo+B1gn1YEa0cXeglrzsB2u'
 BASE_URL = 'https://api.lever.co/v1/'
 
 # Remplacer le nom du Bucket GCP
-BUCKET_NAME = 'lever-loubna-test'
+BUCKET_NAME = 'test-cloudfunction1'
 
 # Fonction pour uploader un fichier JSON directement dans Google Cloud Storage
 def upload_json_to_gcs(json_string, gcs_path):
