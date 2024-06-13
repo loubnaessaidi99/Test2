@@ -97,11 +97,11 @@ def get_offers_for_opportunities(list_oppy):
 @app.route('/hello_http', methods=['POST'])
 def hello_http(request):
     try:
-        list_oppy = get_all("opportunities", None, True)
-        if list_oppy is None:
-            return 'Error processing data.', 500
+        #list_oppy = get_all("opportunities", None, True)
+        #if list_oppy is None:
+            "return 'Error processing data.', 500
 
-        get_offers_for_opportunities(list_oppy)
+        get_all("postings")
         return 'Data processing complete.'
 
     except Exception as e:
