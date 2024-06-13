@@ -95,11 +95,11 @@ def get_offers_for_opportunities(list_oppy):
 
 # Fonction principale déclenchée par une requête HTTP
 @app.route('/hello_http', methods=['POST'])
-def hello_http(request):
+def hello_http():
     try:
-        #list_oppy = get_all("opportunities", None, True)
-        #if list_oppy is None:
-            "return 'Error processing data.', 500
+        # list_oppy = get_all("opportunities", None, True)
+        # if list_oppy is None:
+        #     return 'Error processing data.', 500
 
         get_all("postings")
         return 'Data processing complete.'
@@ -111,4 +111,3 @@ def hello_http(request):
 # Point d'entrée pour exécuter localement ou déployer sur Google Cloud Functions
 if __name__ == "__main__":
     app.run(debug=True)
-
