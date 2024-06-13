@@ -2,14 +2,8 @@ import os
 import requests
 import json
 from requests.auth import HTTPBasicAuth
-import datetime
 from datetime import datetime, timedelta
 from google.cloud import storage
-from flask import Flask, request
-
-# Remplacez par votre clé API Lever
-API_KEY = 'dTbjBylazOJpu7LFacOLRqnF/Bo+B1gn1YEa0cXeglrzsB2u'
-BASE_URL = 'https://api.lever.co/v1/'
 
 # Remplacer le nom du Bucket GCP
 BUCKET_NAME = 'test-bucket-lever'
@@ -30,7 +24,7 @@ def upload_json_to_gcs(json_string, gcs_path):
 def get_all(objects, filters=None, lastupdate=False):
     list_objects = []
     next_cursor = None
-    auth = HTTPBasicAuth(API_KEY, '')
+    auth = HTTPBasicAuth(os.environ.get('API_KEY'), '')
     today = datetime.now()
     date_30j = today - timedelta(days=30)
 
@@ -77,7 +71,7 @@ def get_all(objects, filters=None, lastupdate=False):
 
 def get_offers_for_opportunities(list_oppy):
     all_offers = []
-    auth = HTTPBasicAuth(API_KEY, '')
+    auth = HTTPBasicAuth(os.environ.get('API_KEY'), '')
 
     i = 0
 
@@ -104,13 +98,3 @@ def hello_http(request):
     list_oppy = get_all("opportunities", None, True)
     get_offers_for_opportunities(list_oppy)
     return 'Data processing complete.'
-
-# Pour le déploiement comme une Cloud Function
-app = Flask(__name__)
-
-@app.route('/hello_http', methods=['POST'])
-def handle_request():
-    return hello_http(request)
-
-if __name__ == "__main__":
-    app.run(debug=True)
