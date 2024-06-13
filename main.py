@@ -97,8 +97,8 @@ def get_offers_for_opportunities(list_oppy):
 @app.route('/hello_http', methods=['POST'])
 def hello_http(request=None):  # Accepte maintenant un argument request
     try:
-        get_all("users")
-        return 'Data processing complete.
+        get_all("users", None, False)
+        return 'Data processing complete.'
 
     except Exception as e:
         print(f"Error in hello_http: {e}")
