@@ -47,7 +47,7 @@ def get_all(objects, filters=None, lastupdate=False):
 
     while True:
         i += 1
-        print(f"Iteration {i}")
+        
 
         params = {}
         if next_cursor:
@@ -95,7 +95,7 @@ def get_offers_for_opportunities(list_oppy):
 
 # Fonction principale déclenchée par une requête HTTP
 @app.route('/hello_http', methods=['POST'])
-def hello_http():
+def hello_http(request=None):  # Accepte maintenant un argument request
     try:
         get_all("opportunities", None, True)
         return 'Data processing complete.'
@@ -107,4 +107,3 @@ def hello_http():
 # Point d'entrée pour exécuter localement ou déployer sur Google Cloud Functions
 if __name__ == "__main__":
     app.run(debug=True)
-
