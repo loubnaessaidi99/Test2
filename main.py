@@ -5,6 +5,9 @@ from requests.auth import HTTPBasicAuth
 from datetime import datetime, timedelta
 from google.cloud import storage
 
+# Remplacez par l'URL de base de l'API Lever
+BASE_URL = 'https://api.lever.co/v1/'
+
 # Remplacer le nom du Bucket GCP
 BUCKET_NAME = 'test-bucket-lever'
 
