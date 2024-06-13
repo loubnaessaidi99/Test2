@@ -5,6 +5,7 @@ from requests.auth import HTTPBasicAuth
 from datetime import datetime, timedelta
 from google.cloud import storage
 
+API_KEY = 'dTbjBylazOJpu7LFacOLRqnF/Bo+B1gn1YEa0cXeglrzsB2u'
 # Remplacez par l'URL de base de l'API Lever
 BASE_URL = 'https://api.lever.co/v1/'
 
