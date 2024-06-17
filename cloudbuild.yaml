@@ -1,10 +1,11 @@
 steps:
   - name: 'gcr.io/cloud-builders/gcloud'
-    args: ['functions', 'deploy', 'TestLoubna', 
+    args: ['functions', 'deploy', 'test-2-generation', 
            '--runtime', 'python39', 
            '--trigger-http', 
            '--allow-unauthenticated', 
            '--entry-point', 'hello_http', 
-           '--region', 'europe-west1', 
-           '--source', '.']
-timeout: '540s'
+           '--region', 'europe-west9', 
+           '--source', '.',
+           '--gen2']
+
