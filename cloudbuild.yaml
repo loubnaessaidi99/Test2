@@ -7,5 +7,6 @@ steps:
            '--entry-point', 'hello_http', 
            '--region', 'europe-west9', 
            '--source', '.',
-           '--gen2']
+           '--gen2',
+           '--timeout=30m']
 
