@@ -8,5 +8,5 @@ steps:
            '--region', 'europe-west9', 
            '--source', '.',
            '--gen2',
-           '--timeout=30m']
+           '--timeout=25m']
 
